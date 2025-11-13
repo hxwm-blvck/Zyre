@@ -23,9 +23,9 @@ function Nosotros() {
                 Fundada en 1975 en la hermosa ciudad de <strong>Valdivia</strong>, Zyre nació con un sueño simple: crear la hamburguesa perfecta.
             </p>
             <p>
-                Lo que comenzó como un pequeño carrito familiar, hoy se ha transformado en una 
-                startup que combina la tradición de nuestras recetas secretas con la tecnología 
-                para llevar el sabor a tu puerta en tiempo récord.
+                Lo que comenzó como un pequeño puesto familiar, se ha transformado en un exito 
+                que combina la tradición de nuestras recetas secretas con la tecnología 
+                para llevar el sabor a tu puerta.
             </p>
             <Link to="/menu" className="btn btn-primary btn-lg mt-3">
                 Ver Menú
@@ -33,10 +33,9 @@ function Nosotros() {
         </div>
       </div>
 
-      {/* --- SECCIÓN 2: VALORES (Tres columnas) --- */}
       <div className="row text-center mt-5 pt-4 border-top">
         <div className="col-md-4 mb-4">
-            <div className="h1 mb-3">🥩</div> {/* Puedes cambiar el emoji por un icono si tienes */}
+            <div className="h1 mb-3">🥩</div>
             <h3>Calidad Premium</h3>
             <p className="text-muted">Usamos carne 100% de vacuno y verduras frescas seleccionadas cada mañana.</p>
         </div>
@@ -48,7 +47,7 @@ function Nosotros() {
         <div className="col-md-4 mb-4">
             <div className="h1 mb-3">❤️</div>
             <h3>Tradición</h3>
-            <p className="text-muted">Mantenemos la receta original de la abuela desde hace 50 años.</p>
+            <p className="text-muted">Mantenemos la receta original de la familia desde hace 50 años.</p>
         </div>
       </div>
 
