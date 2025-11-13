@@ -1,16 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-const NavBar = () => {
+const BarraNavegacion = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4 shadow-sm">
       <div className="container">
-        {/* LOGO */}
-        <Link className="navbar-brand" to="/">
-          Zyre
+        <Link className="navbar-brand d-flex align-items-center" to="/">
+          <img 
+            src="/images/logo.jpg" 
+            alt="Logo Zyre" 
+            height="50" 
+            className="d-inline-block align-text-top me-2" 
+          />
+          <span className="fw-bold text-primary">Zyre</span>
         </Link>
 
-        {/* BOTÓN DE MENÚ PARA CELULARES (Hamburguesa) */}
         <button 
           className="navbar-toggler" 
           type="button" 
@@ -20,31 +24,34 @@ const NavBar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* ENLACES DE NAVEGACIÓN */}
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto align-items-center">
+            
             <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+              <NavLink className="nav-link" to="/">Home</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/hamburguesas">Hamburguesas</Link>
+              <NavLink className="nav-link" to="/hamburguesas">Productos</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/postres">Postres</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/admin">Admin</Link>
+              <NavLink className="nav-link" to="/nosotros">Nosotros</NavLink>
             </li>
             
-            {/* BOTÓN DEL CARRITO (Con estilo de botón) */}
-            <li className="nav-item ms-2">
-              <Link className="btn btn-success" to="/carrito">
-                🛒 Carrito ($0)
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/admin">Admin</NavLink>
+            </li>
+            
+            <li className="nav-item ms-3">
+              <Link className="btn btn-warning position-relative" to="/carrito">
+                🛒 Carrito
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  0
+                  <span className="visually-hidden">items</span>
+                </span>
               </Link>
             </li>
              
-             {/* BOTONES DE SESIÓN */}
-            <li className="nav-item ms-2">
+            <li className="nav-item ms-3">
               <Link className="btn btn-outline-primary" to="/login">Login</Link>
             </li>
           </ul>
@@ -54,4 +61,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default BarraNavegacion;

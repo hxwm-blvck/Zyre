@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import Comida from '../../templates/Comida.js'; 
-import TarjetaProducto from '../../molecules/TarjetaProducto.js'; // Asegúrate que la ruta esté bien
-import { obtenerProductos } from '../../../data/database.js';
+import Comida from '../../../templates/Comida.js'; 
+import TarjetaProducto from '../../../molecules/TarjetaProducto.js';
+import { obtenerProductos } from '../../../../data/database.js';
 
 function Hamburguesas() {
   const [listaHamburguesas, setListaHamburguesas] = useState([]);
 
   useEffect(() => {
-    // 1. Cargar todos los productos
-    const todos = obtenerProductos();
-    
-    // 2. Filtrar solo las hamburguesas
+    const todos = obtenerProductos(); 
     const soloHamburguesas = todos.filter(p => p.categoria === 'hamburguesas');
-    
-    // 3. Guardar en el estado
     setListaHamburguesas(soloHamburguesas);
   }, []);
 

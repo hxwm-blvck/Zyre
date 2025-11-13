@@ -5,19 +5,16 @@ const Carrito = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    // Cargar productos del carrito guardado
     const carritoGuardado = JSON.parse(localStorage.getItem('mi_carrito')) || [];
     setItems(carritoGuardado);
   }, []);
 
-  // Función para vaciar
   const vaciarCarrito = () => {
     localStorage.removeItem('mi_carrito');
     setItems([]);
     window.location.reload();
   };
 
-  // Calcular Total
   const total = items.reduce((suma, item) => suma + Number(item.precio), 0);
 
   return (
@@ -58,7 +55,6 @@ const Carrito = () => {
               <div className="card-body">
                 <h3 className="text-center">${total}</h3>
                 <hr />
-                {/* Botón que lleva al Checkout que te pasé antes */}
                 <Link to="/checkout" className="btn btn-primary w-100">
                   Ir a Pagar 💳
                 </Link>

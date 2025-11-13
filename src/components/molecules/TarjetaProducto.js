@@ -1,7 +1,6 @@
 import React from 'react';
 
 const TarjetaProducto = ({ product, onAdd }) => {
-  // Si no hay imagen, ponemos una gris por defecto
   const imgUrl = product.imagen || "https://via.placeholder.com/300";
 
   return (

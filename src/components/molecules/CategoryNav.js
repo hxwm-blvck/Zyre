@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CategoryItem from '../atoms/CategoryItem'; // Importamos nuestro átomo
+import CategoryItem from '../atoms/CategoryItem';
 
 function CategoryNav({ categories, onCategorySelect }) {
   
@@ -27,7 +27,4 @@ function CategoryNav({ categories, onCategorySelect }) {
   );
 }
 
-export default CategoryNav; //exportamos para poder usar el objeto
-
-
-import { Link } from 'react-router-dom'; // 1. Importar esto
+export default CategoryNav;

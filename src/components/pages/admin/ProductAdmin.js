@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { obtenerProductos, crearProducto, eliminarProducto } from '../../../data/database';
 
-const Admin = () => {
+const ProductAdmin = () => {
   const [productos, setProductos] = useState([]);
   
   // Estado para el formulario
@@ -131,4 +131,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default ProductAdmin;

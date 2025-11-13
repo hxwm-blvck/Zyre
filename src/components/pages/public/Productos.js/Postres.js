@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Comida from '../../templates/Comida'; 
-import TarjetaProducto from '../../molecules/TarjetaProducto.js';
-import { obtenerProductos } from '../../../data/database';
+import Comida from '../../../templates/Comida.js'; 
+import TarjetaProducto from '../../../molecules/TarjetaProducto.js';
+import { obtenerProductos } from '../../../../data/database.js';
 
 function Postres() {
   const [listaPostres, setListaPostres] = useState([]);
