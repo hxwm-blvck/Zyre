@@ -13,7 +13,7 @@ function Hamburguesas() {
   }, []);
 
   return (
-    <Comida title="Menú de Hamburguesas">
+    <Comida title="Menú de Hamburguesas de Res">
       <div className="row">
         {listaHamburguesas.length > 0 ? (
           listaHamburguesas.map((item) => (

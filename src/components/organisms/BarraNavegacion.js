@@ -31,7 +31,7 @@ const BarraNavegacion = () => {
               <NavLink className="nav-link" to="/">Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/hamburguesas">Productos</NavLink>
+              <NavLink className="nav-link" to="/Menu">Productos</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/nosotros">Nosotros</NavLink>
