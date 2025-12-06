@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FormGroup from '../../molecules/FormGroup';
 import Button from '../../atoms/Button';
+import { CarritoContext } from '../../../context/CarritoC';
 
 function Checkout() {
   const navigate = useNavigate();
+
+  const { vaciarCarrito } = useContext(CarritoContext);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,13 +24,12 @@ function Checkout() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Procesando tu compra... 💳");
     
     setTimeout(() => {
-      localStorage.removeItem('mi_carrito');
+      vaciarCarrito(); 
       navigate('/exito'); 
     }, 1000);
-  };
+    };
 
   return (
     <div className="container mt-5">
@@ -40,7 +42,7 @@ function Checkout() {
                 label="Nombre completo"
                 type="text"
                 name="name"
-                placeholder="Quien recibe el pedido"
+                placeholder="Quien recibe"
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -49,7 +51,7 @@ function Checkout() {
                 label="Correo electrónico"
                 type="email"
                 name="email"
-                placeholder="Para enviarte la boleta"
+                placeholder="boleta"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -58,7 +60,7 @@ function Checkout() {
                 label="Dirección de Entrega"
                 type="text"
                 name="address"
-                placeholder="Calle, Número, Depto"
+                placeholder="Calle"
                 value={formData.address}
                 onChange={handleChange}
                 required
@@ -67,14 +69,14 @@ function Checkout() {
                 label="Comuna / Ciudad"
                 type="text"
                 name="city"
-                placeholder="Ej: Santiago"
+                placeholder=""
                 value={formData.city}
                 onChange={handleChange}
                 required
               />
               
               <div className="mt-4">
-                <Button text="Pagar y Confirmar" variant="success" type="submit" />
+                <Button text="Pagar" variant="success" type="submit" />
               </div>
             </form>
           </div>

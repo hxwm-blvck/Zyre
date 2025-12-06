@@ -61,7 +61,7 @@ const ProductAdmin = () => {
 
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">Panel de Administración 🛠️</h2>
+      <h2 className="mb-4">Panel de admin</h2>
       
       <div className="row">
         {/* COLUMNA IZQUIERDA: FORMULARIO DE CREACIÓN */}
@@ -93,17 +93,15 @@ const ProductAdmin = () => {
           </div>
         </div>
 
-        {/* COLUMNA DERECHA: TABLA DE PRODUCTOS */}
         <div className="col-md-8">
           <div className="card p-3">
-            <h4>Inventario Actual</h4>
+            <h4>Inventario</h4>
             <table className="table table-striped">
               <thead>
                 <tr>
                   <th>Nombre</th>
                   <th>Precio</th>
                   <th>Categoría</th>
-                  <th>Acciones</th>
                 </tr>
               </thead>
               <tbody>
@@ -117,7 +115,7 @@ const ProductAdmin = () => {
                         className="btn btn-danger btn-sm"
                         onClick={() => handleDelete(prod.id)}
                       >
-                        Eliminar 🗑️
+                        Eliminar
                       </button>
                     </td>
                   </tr>

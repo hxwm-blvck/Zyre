@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Importamos Link para el botón
+import { Link } from 'react-router-dom';
 
 function Inicio() {
   return(
@@ -16,13 +16,10 @@ function Inicio() {
             <h1 className="display-3 fw-bold mb-2">
                 Bienvenido a Zyre
             </h1>
-            <p className="lead text-muted mb-4">
-                Sabor de tradición y delivery rápido.
-            </p>
 
             <div>
                 <Link to="/menu" className="btn btn-danger btn-lg px-5 py-3 fw-bold shadow">
-                    🍔 ¡QUIERO PEDIR AHORA!
+                    Pide ahora
                 </Link>
             </div>
         </div>
@@ -31,30 +28,30 @@ function Inicio() {
             
             <div className="col-md-4">
                 <div className="card h-100 border-0 shadow-sm text-center p-4 bg-light">
-                    <div className="display-4 mb-3">💰</div>
-                    <h4 className="card-title">ZyreCash</h4>
+                    <div className="display-4 mb-3"></div>
+                    <h4 className="card-title">Puntos Zyre</h4>
                     <p className="card-text text-muted">
-                        Gana <strong>1 ZyreCash</strong> por cada $1.000 pesos gastados.
+                        Gana <strong>1 punto</strong> por cada $1.000 pesos gastados.
                     </p>
                 </div>
             </div>
 
             <div className="col-md-4">
                 <div className="card h-100 border-0 shadow-sm text-center p-4 bg-light">
-                    <div className="display-4 mb-3">🚚</div>
-                    <h4 className="card-title">Envíos con Descuento</h4>
+                    <div className="display-4 mb-3"></div>
+                    <h4 className="card-title">Envios</h4>
                     <p className="card-text text-muted">
-                        Obtén un <strong>5% de descuento</strong> automático en el envío a tu domicilio.
+                        Ten un 5% de descuento al pedir por la web.
                     </p>
                 </div>
             </div>
 
             <div className="col-md-4">
                 <div className="card h-100 border-0 shadow-sm text-center p-4 bg-light">
-                    <div className="display-4 mb-3">🎟️</div>
-                    <h4 className="card-title">Sorteos Exclusivos</h4>
+                    <div className="display-4 mb-3"></div>
+                    <h4 className="card-title">Canjear</h4>
                     <p className="card-text text-muted">
-                        Participa en sorteos mensuales solo por ser cliente frecuente (ver TyC).
+                        Canjea productos con tus puntos Zyre.
                     </p>
                 </div>
             </div>

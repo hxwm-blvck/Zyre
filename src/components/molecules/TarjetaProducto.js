@@ -1,7 +1,21 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { CarritoContext } from '../../context/CarritoC';
 
 const TarjetaProducto = ({ product, onAdd }) => {
+
+  const context = useContext(CarritoContext);
+
+  if (!context) {
+    console.error("¡Error! TarjetaProducto está fuera del CarritoProvider.");
+    return null; 
+  }
+  const { agregarAlCarrito } = context;
   const imgUrl = product.imagen || "https://via.placeholder.com/300";
+
+  const handleAgregar = () => {
+    agregarAlCarrito(product);
+    alert(`¡${product.nombre} agregado al carrito! 🛒`);
+  };
 
   return (
     <div className="card h-100 shadow-sm">
@@ -18,7 +32,7 @@ const TarjetaProducto = ({ product, onAdd }) => {
         
         <button 
           className="btn btn-dark mt-3 w-100"
-          onClick={() => alert(`Agregaste ${product.nombre} al carrito (Simulado)`)}
+          onClick={handleAgregar}
         >
           Agregar al Carrito
         </button>

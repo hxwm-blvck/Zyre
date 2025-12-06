@@ -7,9 +7,10 @@ const RegistrationPage = () => {
 
   const handleRegistro = (datosUsuario) => {
     localStorage.setItem('usuario_zyre', JSON.stringify(datosUsuario));
-    alert(`¡Bienvenido a Zyre, ${datosUsuario.name}! Cuenta creada con éxito. 🍔`);
-    navigate('/'); 
+    alert(`${datosUsuario.name} Cuenta creada.`);
+    window.location.href = "/";
   };
+
 
   return (
     <div className="container mt-5 mb-5">
@@ -17,8 +18,7 @@ const RegistrationPage = () => {
             <div className="col-md-6">
                 <div className="card shadow-sm border-0">
                     <div className="card-body p-4">
-                        <h2 className="text-center mb-4 text-primary">Únete a Zyre 🍔</h2>
-                        <p className="text-center text-muted mb-4">Crea tu cuenta para pedir online</p>
+                        <h2 className="text-center mb-4 text-primary">Crea tu cuenta</h2>
                         <RegistrationForm onRegister={handleRegistro} />
                     </div>
                 </div>

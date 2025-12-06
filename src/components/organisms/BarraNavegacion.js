@@ -1,10 +1,31 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { CarritoContext } from '../../context/CarritoC';
 
 const BarraNavegacion = () => {
+  const [usuario, setUsuario] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const usuarioGuardado = localStorage.getItem('usuario_zyre');
+    if (usuarioGuardado) {
+      setUsuario(JSON.parse(usuarioGuardado));
+    }
+  }, []);
+
+  const { cantidadTotal } = useContext(CarritoContext);
+
+  const handleLogout = () => {
+    localStorage.removeItem('usuario_zyre');
+    setUsuario(null);
+    navigate('/');
+    window.location.reload();
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4 shadow-sm">
       <div className="container">
+        
         <Link className="navbar-brand d-flex align-items-center" to="/">
           <img 
             src="/images/logo.jpg" 
@@ -28,32 +49,46 @@ const BarraNavegacion = () => {
           <ul className="navbar-nav ms-auto align-items-center">
             
             <li className="nav-item">
-              <NavLink className="nav-link" to="/">Home</NavLink>
+              <NavLink className="nav-link" to="/">Inicio</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/Menu">Productos</NavLink>
+              <NavLink className="nav-link" to="/menu">Productos</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/nosotros">Nosotros</NavLink>
             </li>
-            
             <li className="nav-item">
-              <NavLink className="nav-link" to="/admin">Admin</NavLink>
+              <NavLink className="nav-link" to="/admin/productos">Admin</NavLink>
             </li>
             
             <li className="nav-item ms-3">
               <Link className="btn btn-warning position-relative" to="/carrito">
-                🛒 Carrito
+                Carrito
+                {cantidadTotal > 0 && (
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  0
-                  <span className="visually-hidden">items</span>
+                  {cantidadTotal}
                 </span>
+                )}
               </Link>
             </li>
              
-            <li className="nav-item ms-3">
-              <Link className="btn btn-outline-primary" to="/login">Login</Link>
-            </li>
+            {usuario ? (
+                <li className="nav-item ms-3 dropdown">
+                    <a className="nav-link dropdown-toggle fw-bold text-primary" href="#" role="button" data-bs-toggle="dropdown">
+                          {usuario.name}
+                    </a>
+                    <ul className="dropdown-menu dropdown-menu-end">
+                        <li><button className="dropdown-item text-danger" onClick={handleLogout}>Cerrar Sesion</button></li>
+                    </ul>
+                </li>
+            ) : (
+                <li className="nav-item ms-3">
+                    <NavLink className="btn btn-primary" to="/registro">
+                        Registrarse / Login
+                    </NavLink>
+                </li>
+            )}
+
           </ul>
         </div>
       </div>

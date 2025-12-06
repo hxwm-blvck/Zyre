@@ -17,37 +17,16 @@ function Nosotros() {
         </div>
 
         <div className="col-md-6">
-            <h2 className="display-5 fw-bold mb-3">Nuestra Historia</h2>
-            <h4 className="text-muted mb-4">Del Sur de Chile a tu mesa.</h4>
+            <h2 className="display-5 fw-bold mb-3">Nosotros</h2>
             <p className="lead">
-                Fundada en 1975 en la hermosa ciudad de <strong>Valdivia</strong>, Zyre nació con un sueño simple: crear la hamburguesa perfecta.
+                Zyre se creo como un pequeño proyecto de comida rapida entre amigos.
             </p>
             <p>
-                Lo que comenzó como un pequeño puesto familiar, se ha transformado en un exito 
-                que combina la tradición de nuestras recetas secretas con la tecnología 
-                para llevar el sabor a tu puerta.
+                Lo que nos motiva es hacer que cada producto sea una experiencia sin igual.
             </p>
             <Link to="/menu" className="btn btn-primary btn-lg mt-3">
-                Ver Menú
+                Ver Menu
             </Link>
-        </div>
-      </div>
-
-      <div className="row text-center mt-5 pt-4 border-top">
-        <div className="col-md-4 mb-4">
-            <div className="h1 mb-3">🥩</div>
-            <h3>Calidad Premium</h3>
-            <p className="text-muted">Usamos carne 100% de vacuno y verduras frescas seleccionadas cada mañana.</p>
-        </div>
-        <div className="col-md-4 mb-4">
-            <div className="h1 mb-3">🚀</div>
-            <h3>Entrega Rápida</h3>
-            <p className="text-muted">Nuestro sistema optimizado asegura que tu comida llegue caliente y a tiempo.</p>
-        </div>
-        <div className="col-md-4 mb-4">
-            <div className="h1 mb-3">❤️</div>
-            <h3>Tradición</h3>
-            <p className="text-muted">Mantenemos la receta original de la familia desde hace 50 años.</p>
         </div>
       </div>
 

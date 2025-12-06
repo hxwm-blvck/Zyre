@@ -13,20 +13,16 @@ function Hamburguesas() {
   }, []);
 
   return (
-    <Comida title="Menú de Hamburguesas de Res">
+    <Comida title="Menu de Hamburguesas de Vacuno">
       <div className="row">
-        {listaHamburguesas.length > 0 ? (
-          listaHamburguesas.map((item) => (
-            <div className="col-md-4 mb-4" key={item.id}>
-              <TarjetaProducto product={item} />
-            </div>
-          ))
-        ) : (
-          <p className="text-center">Cargando productos...</p>
-        )}
+        {listaHamburguesas.map((item) => (
+          <div className="col-md-4 mb-4" key={item.id}>
+            <TarjetaProducto product={item} />
+          </div>
+        ))}
       </div>
     </Comida>
-  );
+);
 }
 
 export default Hamburguesas;
