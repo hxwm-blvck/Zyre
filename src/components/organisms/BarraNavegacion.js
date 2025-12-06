@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { CarritoContext } from '../../context/CarritoC';
 
 const BarraNavegacion = () => {
   const [usuario, setUsuario] = useState(null);
@@ -13,12 +12,11 @@ const BarraNavegacion = () => {
     }
   }, []);
 
-  const { cantidadTotal } = useContext(CarritoContext);
 
   const handleLogout = () => {
     localStorage.removeItem('usuario_zyre');
     setUsuario(null);
-    navigate('/');
+    navigate('/Inicio');
     window.location.reload();
   };
 
@@ -58,35 +56,41 @@ const BarraNavegacion = () => {
               <NavLink className="nav-link" to="/nosotros">Nosotros</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/admin/productos">Admin</NavLink>
+              <NavLink className="nav-link" to="/admin">Admin</NavLink>
             </li>
             
             <li className="nav-item ms-3">
               <Link className="btn btn-warning position-relative" to="/carrito">
                 Carrito
-                {cantidadTotal > 0 && (
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  {cantidadTotal}
-                </span>
-                )}
               </Link>
             </li>
              
             {usuario ? (
-                <li className="nav-item ms-3 dropdown">
-                    <a className="nav-link dropdown-toggle fw-bold text-primary" href="#" role="button" data-bs-toggle="dropdown">
-                          {usuario.name}
-                    </a>
-                    <ul className="dropdown-menu dropdown-menu-end">
-                        <li><button className="dropdown-item text-danger" onClick={handleLogout}>Cerrar Sesion</button></li>
-                    </ul>
-                </li>
+                <>
+                    <li className="nav-item ms-2">
+                        <span className="nav-link fw-bold text-primary">
+                            {usuario.name}
+                        </span>
+                    </li>
+                    <li className="nav-item ms-2">
+                        <button className="btn btn-outline-danger btn-sm" onClick={handleLogout}>
+                            Cerrar Sesión
+                        </button>
+                    </li>
+                </>
             ) : (
-                <li className="nav-item ms-3">
-                    <NavLink className="btn btn-primary" to="/registro">
-                        Registrarse / Login
-                    </NavLink>
-                </li>
+                <>
+                    <li className="nav-item ms-2">
+                        <NavLink className="btn btn-outline-primary" to="/login">
+                            Ingresar
+                        </NavLink>
+                    </li>
+                    <li className="nav-item ms-2">
+                        <NavLink className="btn btn-primary" to="/registro">
+                            Crear Cuenta
+                        </NavLink>
+                    </li>
+                </>
             )}
 
           </ul>

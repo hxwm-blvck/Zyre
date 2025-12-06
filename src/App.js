@@ -10,6 +10,8 @@ import Exito from './components/pages/public/Exito';
 import BarraNavegacion from './components/organisms/BarraNavegacion.js'; 
 import Nosotros from './components/pages/public/Nosotros.js';
 import { CarritoProvider } from './context/CarritoC.js';
+import Login from './components/pages/public/Login';
+import Dashboard from './components/pages/admin/Dashboard';
 
 function App() {
   return (
@@ -29,7 +31,9 @@ function App() {
 
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/registro" element={<RegistrationPage />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/exito" element={<Exito />} />
+        <Route path="/admin" element={<Dashboard />} />
         
       </Routes>
     </BrowserRouter>

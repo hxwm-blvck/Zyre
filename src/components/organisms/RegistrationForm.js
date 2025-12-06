@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import FormGroup from '../molecules/FormGroup';
 import Button from '../atoms/Button';
 
-function RegistrationForm() {
+function RegistrationForm({ onRegister }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,7 +20,21 @@ function RegistrationForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Datos enviados:', formData);
-    // Aquí iría la lógica de envío
+    
+    if (formData.password !== formData.confirmPassword) {
+        alert("Las contraseñas no coinciden");
+        return;
+    }
+
+    if (formData.password.length < 8) {
+      alert("La contraseña no tiene el minimo requerido de caracteres");
+      return;
+    }
+    if (onRegister) {
+        onRegister(formData);
+    } else {
+        console.log('Datos enviados (Modo prueba):', formData);
+    }
   };
 
   return (

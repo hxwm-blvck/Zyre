@@ -4,15 +4,13 @@ import { obtenerProductos, crearProducto, eliminarProducto } from '../../../data
 const ProductAdmin = () => {
   const [productos, setProductos] = useState([]);
   
-  // Estado para el formulario
   const [form, setForm] = useState({
     nombre: '',
     precio: '',
-    categoria: 'hamburguesas', // Valor por defecto
+    categoria: 'hamburguesas',
     descripcion: ''
   });
 
-  // 1. Cargar productos al iniciar
   const cargarDatos = () => {
     const data = obtenerProductos();
     setProductos(data);
@@ -22,7 +20,6 @@ const ProductAdmin = () => {
     cargarDatos();
   }, []);
 
-  // 2. Manejar cambios en el formulario (Inputs)
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -30,28 +27,25 @@ const ProductAdmin = () => {
     });
   };
 
-  // 3. Función CREAR (Submit del formulario)
   const handleSubmit = (e) => {
-    e.preventDefault(); // Evita que se recargue la página
+    e.preventDefault(); 
     
-    // Creamos el objeto producto nuevo
+  
     const nuevo = {
       nombre: form.nombre,
       precio: Number(form.precio),
       categoria: form.categoria,
       descripcion: form.descripcion,
-      imagen: "https://via.placeholder.com/300" // Imagen por defecto para no complicarnos
+      imagen: "https://via.placeholder.com/300" 
     };
 
-    crearProducto(nuevo); // Guardamos en la "Base de Datos"
-    cargarDatos(); // Recargamos la tabla visualmente
-    alert("Producto creado con éxito ✅");
+    crearProducto(nuevo);
+    cargarDatos(); 
+    alert("Producto creado con éxito");
     
-    // Limpiamos el formulario
     setForm({ nombre: '', precio: '', categoria: 'hamburguesas', descripcion: '' });
   };
 
-  // 4. Función ELIMINAR
   const handleDelete = (id) => {
     if (window.confirm("¿Seguro que quieres eliminar este producto?")) {
       eliminarProducto(id);
@@ -64,7 +58,6 @@ const ProductAdmin = () => {
       <h2 className="mb-4">Panel de admin</h2>
       
       <div className="row">
-        {/* COLUMNA IZQUIERDA: FORMULARIO DE CREACIÓN */}
         <div className="col-md-4">
           <div className="card p-3 mb-4">
             <h4>Agregar Producto</h4>

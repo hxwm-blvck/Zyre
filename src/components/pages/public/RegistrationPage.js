@@ -7,8 +7,8 @@ const RegistrationPage = () => {
 
   const handleRegistro = (datosUsuario) => {
     localStorage.setItem('usuario_zyre', JSON.stringify(datosUsuario));
-    alert(`${datosUsuario.name} Cuenta creada.`);
-    window.location.href = "/";
+    alert(`Creaste tu cuenta ${datosUsuario.name}`);
+    navigate('/');
   };
 
 

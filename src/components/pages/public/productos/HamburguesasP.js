@@ -15,18 +15,14 @@ function Hamburguesas() {
   return (
     <Comida title="Menu de Hamburguesas de Pollo">
       <div className="row">
-        {listaHamburguesas.length > 0 ? (
-          listaHamburguesas.map((item) => (
-            <div className="col-md-4 mb-4" key={item.id}>
-              <TarjetaProducto product={item} />
-            </div>
-          ))
-        ) : (
-          <p className="text-center">Cargando productos</p>
-        )}
+        {listaHamburguesas.map((item) => (
+          <div className="col-md-4 mb-4" key={item.id}>
+            <TarjetaProducto product={item} />
+          </div>
+        ))}
       </div>
     </Comida>
-  );
+);
 }
 
 export default Hamburguesas;
