@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.Usuario;
 import com.example.demo.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
@@ -25,14 +26,15 @@ public class UsuarioController {
         return usuarioRepository.save(nuevoUsuario);
     }
 
-    @PostMapping("/login")
-    public Usuario login(@RequestBody Usuario loginData) {
-        Optional<Usuario> usuario = usuarioRepository.findByEmail(loginData.getEmail());
-
-        if (usuario.isPresent() && usuario.get().getPassword().equals(loginData.getPassword())) {
-            return usuario.get();
-        }
-        
-        return null;
+   @PostMapping("/login")
+    public ResponseEntity<Usuario> login(@RequestBody Usuario usuarioLogin) {
+    Usuario usuario = usuarioRepository.findByEmail(usuarioLogin.getEmail()).orElse(null);
+    
+    
+    if (usuario != null && usuario.getPassword().equals(usuarioLogin.getPassword())) {
+        return ResponseEntity.ok(usuario);
     }
+    
+    return ResponseEntity.status(401).build();
+}
 }
