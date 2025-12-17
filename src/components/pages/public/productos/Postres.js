@@ -7,10 +7,16 @@ function Postres() {
   const [listaPostres, setListaPostres] = useState([]);
 
   useEffect(() => {
-    const todos = obtenerProductos();
-    const soloPostres = todos.filter(p => p.categoria === 'postres');
-    setListaPostres(soloPostres);
-  }, []);
+    const cargarDatos = async () => {
+          const todos = await obtenerProductos(); 
+          
+          const soloPostres = todos?.filter(p => p.categoria === 'postres');
+          
+          setListaPostres(soloPostres);
+        };
+    
+        cargarDatos();
+      }, []);
 
   return (
     <Comida title="Postres">

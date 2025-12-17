@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-
+import { loginUsuario } from '../../../data/database'; //funcion deldatabase.js
 const Login = () => {
   const navigate = useNavigate();
-  const [nombre, setNombre] = useState('');
-    const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     
-    const datosUsuario = { name: nombre, email: email };
+    const usuarioValido =  await loginUsuario(email, password);
     
-    localStorage.setItem('usuario_zyre', JSON.stringify(datosUsuario));
-    
-    alert(`Bienvenido ${datosUsuario.name}`);
-    
-    navigate('/');
+    if (usuarioValido){
+      localStorage.setItem('usuario_zyre', JSON.stringify(usuarioValido));
+      alert("Login exitoso")
+      navigate('/');
     window.location.reload();
+    } else{
+      alert("Correo o contraseña incorrecta");
+    }
   };
 
   return (
@@ -27,17 +29,6 @@ const Login = () => {
             <h2 className="text-center mb-4 text-primary">Iniciar Sesión</h2>
             
             <form onSubmit={handleLogin}>
-
-                <div className="mb-3">
-                <label className="form-label">Nombre</label>
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  placeholder="Tu nombre"
-                  value={nombre}
-                  onChange={(e) => setNombre(e.target.value)}
-                />
-              </div>
 
               <div className="mb-3">
                 <label className="form-label">Correo Electrónico</label>
@@ -57,6 +48,8 @@ const Login = () => {
                   type="password" 
                   className="form-control" 
                   placeholder="******" 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required 
                 />
               </div>

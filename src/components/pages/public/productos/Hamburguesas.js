@@ -7,9 +7,17 @@ function Hamburguesas() {
   const [listaHamburguesas, setListaHamburguesas] = useState([]);
 
   useEffect(() => {
-    const todos = obtenerProductos(); 
-    const soloHamburguesas = todos.filter(p => p.categoria === 'hamburguesas');
-    setListaHamburguesas(soloHamburguesas);
+    const cargarDatos = async () => {
+      try {
+        const todos = await obtenerProductos(); 
+        const soloHamburguesas = todos?.filter(p => p.categoria === 'hamburguesas');
+        setListaHamburguesas(soloHamburguesas);
+      } catch (error) {
+        console.error("Error cargando hamburguesas:", error);
+        setListaHamburguesas([]);
+      }
+  };
+  cargarDatos();
   }, []);
 
   return (

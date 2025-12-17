@@ -3,14 +3,21 @@ import Comida from '../../../templates/Comida.js';
 import TarjetaProducto from '../../../molecules/TarjetaProducto.js';
 import { obtenerProductos } from '../../../../data/database.js';
 
+
 function Hamburguesas() {
   const [listaHamburguesas, setListaHamburguesas] = useState([]);
 
   useEffect(() => {
-      const todos = obtenerProductos(); 
-      const soloHamburguesas = todos.filter(p => p.categoria === 'hamburguesasP');
-      setListaHamburguesas(soloHamburguesas);
-    }, []);
+      const cargarDatos = async () => {
+            const todos = await obtenerProductos(); 
+            
+            const soloHamburguesas = todos?.filter(p => p.categoria === 'hamburguesasP');
+            
+            setListaHamburguesas(soloHamburguesas);
+          };
+      
+          cargarDatos();
+        }, []);
 
   return (
     <Comida title="Menu de Hamburguesas de Pollo">

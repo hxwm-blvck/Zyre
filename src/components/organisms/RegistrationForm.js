@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import FormGroup from '../molecules/FormGroup';
 import Button from '../atoms/Button';
+import { registrarUsuario } from '../../data/database';
+import { useNavigate } from 'react-router-dom'; // hook
 
-function RegistrationForm({ onRegister }) {
+function RegistrationForm() {
+  const navigate = useNavigate(); // iniciamos el hook
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     confirmPassword: ''
   });
+
 
   const handleChange = (e) => {
     setFormData({
@@ -17,23 +22,36 @@ function RegistrationForm({ onRegister }) {
     });
   };
 
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Datos enviados:', formData);
-    
+
     if (formData.password !== formData.confirmPassword) {
         alert("Las contraseñas no coinciden");
         return;
     }
 
     if (formData.password.length < 8) {
-      alert("La contraseña no tiene el minimo requerido de caracteres");
-      return;
+        alert("La contraseña debe tener al menos 8 caracteres");
+        return;
     }
-    if (onRegister) {
-        onRegister(formData);
+
+    
+    const usuarioBackend = {
+        nombre: formData.name, 
+        email: formData.email,
+        password: formData.password,
+        rol: "cliente" //rol defecto
+    };
+
+    // Llamada al Backend
+    const respuesta = await registrarUsuario(usuarioBackend);
+    
+    if (respuesta) {
+      alert("¡Registrado");
+      navigate('/login'); 
     } else {
-        console.log('Datos enviados (Modo prueba):', formData);
+      alert("Error al registrarte");
     }
   };
 

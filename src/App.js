@@ -14,6 +14,7 @@ import Login from './components/pages/public/Login';
 import Dashboard from './components/pages/admin/Dashboard';
 
 function App() {
+  const usuarioLogueado = JSON.parse(localStorage.getItem('usuario_zyre'));
   return (
     <>
     <CarritoProvider>
@@ -27,13 +28,18 @@ function App() {
         <Route path="/nosotros" element={<Nosotros />} />
 
         <Route path="/carrito" element={<Carrito />} />
-        <Route path="/admin/productos" element={<ProductAdmin />} />
+        <Route path="/admin" element={
+          usuarioLogueado && usuarioLogueado.email === 'admin@gmail.com' 
+          ? <Dashboard /> : <Login />} />
+        <Route path="/admin/productos" element={
+          usuarioLogueado && usuarioLogueado.email === 'admin@gmail.com' 
+          ? <ProductAdmin /> :  <Login />} />
 
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/registro" element={<RegistrationPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/exito" element={<Exito />} />
-        <Route path="/admin" element={<Dashboard />} />
+        
         
       </Routes>
     </BrowserRouter>

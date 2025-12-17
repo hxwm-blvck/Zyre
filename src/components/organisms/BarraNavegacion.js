@@ -69,7 +69,7 @@ const BarraNavegacion = () => {
                 <>
                     <li className="nav-item ms-2">
                         <span className="nav-link fw-bold text-primary">
-                            {usuario.name}
+                            {usuario.nombre}
                         </span>
                     </li>
                     <li className="nav-item ms-2">

@@ -6,24 +6,27 @@ const TarjetaProducto = ({ product, onAdd }) => {
   const context = useContext(CarritoContext);
 
   if (!context) {
-    console.error("¡Error! TarjetaProducto está fuera del CarritoProvider.");
+    console.error("Error");
     return null; 
   }
   const { agregarAlCarrito } = context;
-  const imgUrl = product.imagen || "https://via.placeholder.com/300";
+  const manejoErrorI = (e) => {
+    e.target.src = "https://via.placeholder.com/300";
+  };
 
   const handleAgregar = () => {
     agregarAlCarrito(product);
-    alert(`¡${product.nombre} agregado al carrito! 🛒`);
+    alert(`¡${product.nombre} agregado al carro`);
   };
 
   return (
     <div className="card h-100 shadow-sm">
       <img 
-        src={imgUrl} 
+        src={product.imagen} 
         className="card-img-top" 
         alt={product.nombre} 
         style={{ height: '200px', objectFit: 'cover' }}
+        onError={manejoErrorI}
       />
       <div className="card-body d-flex flex-column">
         <h5 className="card-title">{product.nombre}</h5>
