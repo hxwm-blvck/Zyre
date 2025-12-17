@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8081/api";
+export const API_URL = "http://98.94.0.68:8081/api";
 
 //datos de respaldo (antes eran los datos de la pagina web normal)
 const datosRespaldo = [
@@ -171,5 +171,19 @@ export const loginUsuario = async (email, password) => {
   } catch (error) {
     console.error("Error de red en login:", error);
     return null;
+  }
+};
+
+export const realizarCompra = async (compraData) => {
+  try {
+    const response = await fetch(`${API_URL}/compras`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(compraData),
+    });
+    return response.ok;
+  } catch (error) {
+    console.error("Error al comprar:", error);
+    return false;
   }
 };

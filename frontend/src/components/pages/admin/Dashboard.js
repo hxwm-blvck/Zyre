@@ -24,8 +24,8 @@ const Dashboard = () => {
             </Link>
           </li>
           <li className="nav-item mb-2">
-            <Link to="/admin/ordenes" className="nav-link text-white">
-              Ordenes
+            <Link to="/admin/ventas" className="nav-link text-white">
+              Órdenes
             </Link>
           </li>
           <li className="nav-item mb-2">
@@ -114,7 +114,7 @@ const Dashboard = () => {
 
         <div className="row">
             <div className="col-md-3 mb-4">
-                <Link to="/admin">
+                <Link to="/admin" className="text-decoration-none text-dark">
                 <div className="card h-100 text-center p-3 shadow-sm border-0">
                     <div className="card-body">
                         <h1 className="text-primary"></h1>
@@ -126,13 +126,15 @@ const Dashboard = () => {
             </div>
 
             <div className="col-md-3 mb-4">
-                <div className="card h-100 text-center p-3 shadow-sm border-0">
-                    <div className="card-body">
-                        <h1 className="text-primary"></h1>
-                        <h5>Órdenes</h5>
-                        <p className="small text-muted">Gestión de compras realizadas</p>
+                <Link to="/admin/ventas" className="text-decoration-none text-dark">
+                    <div className="card h-100 text-center p-3 shadow-sm border-0">
+                        <div className="card-body">
+                            <h1 className="text-primary"></h1>
+                            <h5>Órdenes</h5>
+                            <p className="small text-muted">Gestión de compras realizadas</p>
+                        </div>
                     </div>
-                </div>
+                </Link>
             </div>
 
             <div className="col-md-3 mb-4">

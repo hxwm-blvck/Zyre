@@ -1,22 +1,42 @@
-import React, {useContext} from 'react';
-import { CarritoContext } from '../../context/CarritoC';
+import React from 'react';
+import { realizarCompra } from '../../data/database'; 
 
-const TarjetaProducto = ({ product, onAdd }) => {
+const TarjetaProducto = ({ product }) => {
+  
 
-  const context = useContext(CarritoContext);
+  const usuario = JSON.parse(localStorage.getItem('usuario_zyre'));
 
-  if (!context) {
-    console.error("Error");
-    return null; 
-  }
-  const { agregarAlCarrito } = context;
   const manejoErrorI = (e) => {
     e.target.src = "https://via.placeholder.com/300";
   };
 
-  const handleAgregar = () => {
-    agregarAlCarrito(product);
-    alert(`¡${product.nombre} agregado al carro`);
+  const handleComprar = async () => {
+ 
+    if (!usuario) {
+      alert("Debes iniciar sesion");
+      return;
+    }
+
+ 
+    const confirmacion = window.confirm(`¿Confirmar compra de ${product.nombre} por $${product.precio}?`);
+    
+    if (confirmacion) {
+   
+      const nuevaCompra = {
+        usuarioEmail: usuario.email,
+        detalleCompra: product.nombre, 
+        total: product.precio
+      };
+
+  
+      const exito = await realizarCompra(nuevaCompra);
+
+      if (exito) {
+        alert("Compra exitosa");
+      } else {
+        alert("Hubo un error.");
+      }
+    }
   };
 
   return (
@@ -34,10 +54,10 @@ const TarjetaProducto = ({ product, onAdd }) => {
         <h6 className="mt-auto text-primary fw-bold">${product.precio}</h6>
         
         <button 
-          className="btn btn-dark mt-3 w-100"
-          onClick={handleAgregar}
+          className="btn btn-warning mt-3 w-100 fw-bold"
+          onClick={handleComprar}
         >
-          Agregar al Carrito
+          Comprar
         </button>
       </div>
     </div>

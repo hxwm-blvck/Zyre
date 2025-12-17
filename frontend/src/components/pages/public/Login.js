@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { loginUsuario } from '../../../data/database'; //funcion deldatabase.js
+import { useNavigate } from 'react-router-dom';
+import AuthService from '../../../services/AuthService'; 
+
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -9,15 +10,19 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     
-    const usuarioValido =  await loginUsuario(email, password);
-    
-    if (usuarioValido){
-      localStorage.setItem('usuario_zyre', JSON.stringify(usuarioValido));
-      alert("Login exitoso")
-      navigate('/');
-    window.location.reload();
-    } else{
-      alert("Correo o contraseña incorrecta");
+    try {
+        
+        await AuthService.login(email, password);
+        
+        
+        alert("Login exitoso");
+        navigate('/');
+        window.location.reload();
+
+    } catch (error) {
+        
+        console.error("Error login:", error);
+        alert("Correo o contraseña incorrecta");
     }
   };
 
@@ -26,12 +31,12 @@ const Login = () => {
       <div className="row justify-content-center">
         <div className="col-md-5">
           <div className="card shadow p-4 border-0">
-            <h2 className="text-center mb-4 text-primary">Iniciar Sesión</h2>
+            <h2 className="text-center mb-4 text-primary">Iniciar Sesion</h2>
             
             <form onSubmit={handleLogin}>
 
               <div className="mb-3">
-                <label className="form-label">Correo Electrónico</label>
+                <label className="form-label">Correo</label>
                 <input 
                   type="email" 
                   className="form-control" 
